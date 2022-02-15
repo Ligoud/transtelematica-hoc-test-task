@@ -1,0 +1,122 @@
+[
+  {
+    "id": "siamese",
+    "parent_id": "cats",
+    "name": "Сиамская",
+    "flags": ""
+  },
+  {
+    "id": "bengal",
+    "parent_id": "cats",
+    "name": "Бенгальская",
+    "flags": ""
+  },
+  {
+    "id": "scottish",
+    "parent_id": "cats",
+    "name": "Шотландская",
+    "flags": ""
+  },
+  {
+    "id": "bulldog",
+    "parent_id": "dogs",
+    "name": "Бульдог",
+    "flags": ""
+  },
+  {
+    "id": "pug",
+    "parent_id": "dogs",
+    "name": "Мопс",
+    "flags": ""
+  },
+  {
+    "id": "rottweiler",
+    "parent_id": "dogs",
+    "name": "Ротвейлер",
+    "flags": ""
+  },
+  {
+    "id": "golden",
+    "parent_id": "dogs",
+    "name": "Золотой ретривер",
+    "flags": ""
+  },
+  {
+    "id": "labrador",
+    "parent_id": "dogs",
+    "name": "Лабрадор ретривер",
+    "flags": ""
+  },
+  {
+    "id": "basset",
+    "parent_id": "dogs",
+    "name": "Бассет хаунд",
+    "flags": ""
+  },
+  {
+    "id": "beagle",
+    "parent_id": "dogs",
+    "name": "Бигль",
+    "flags": ""
+  },
+  {
+    "id": "sparrow",
+    "parent_id": "birds",
+    "name": "Воробей",
+    "flags": ""
+  },
+  {
+    "id": "seagull",
+    "parent_id": "birds",
+    "name": "Чайка",
+    "flags": ""
+  },
+  {
+    "id": "pigeon",
+    "parent_id": "birds",
+    "name": "Голубь",
+    "flags": ""
+  },
+  {
+    "id": "chicken",
+    "parent_id": "birds",
+    "name": "Курица",
+    "flags": ""
+  },
+  {
+    "id": "salmon",
+    "parent_id": "fish",
+    "name": "Лосось",
+    "flags": ""
+  },
+  {
+    "id": "perch",
+    "parent_id": "fish",
+    "name": "Окунь",
+    "flags": ""
+  },
+  {
+    "id": "catfish",
+    "parent_id": "fish",
+    "name": "Сом",
+    "flags": ""
+  },
+  {
+    "id": "pike",
+    "parent_id": "fish",
+    "name": "Щука",
+    "flags": ""
+  },
+  {
+    "id": "house spider",
+    "parent_id": "spiders",
+    "name": "Домовый паук",
+    "flags": ""
+  },
+  {
+    "id": "tarantula",
+    "parent_id": "spiders",
+    "name": "Тарантул",
+    "flags": ""
+  }
+]

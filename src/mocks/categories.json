@@ -1,0 +1,27 @@
+[
+  {
+    "id": "cats",
+    "name": "Кошки",
+    "flags": ""
+  },
+  {
+    "id": "dogs",
+    "name": "Собаки",
+    "flags": ""
+  },
+  {
+    "id": "birds",
+    "name": "Птицы",
+    "flags": ""
+  },
+  {
+    "id": "fish",
+    "name": "Рыбы",
+    "flags": ""
+  },
+  {
+    "id": "spiders",
+    "name": "Пауки",
+    "flags": ""
+  }
+]
