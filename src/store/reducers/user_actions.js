@@ -8,16 +8,21 @@ const reducer = (state = inititalState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case types.SET_USER_ACTIONS:
+    case types.ADD_USER_ACTIONS: {
+      const copy = [...state.actions];
+      const objectToPush = {
+        id: 0,
+        eventName: payload.name,
+        eventValue: payload.value,
+      };
+      if (!!copy.length) objectToPush.id = copy[copy.length - 1].id + 1;
+
+      copy.push(objectToPush);
       return {
         ...state,
-        actions: payload,
+        actions: copy,
       };
-    case types.ADD_USER_ACTIONS:
-      return {
-        ...state,
-        actions: [...state.actions, payload],
-      };
+    }
     case types.UPDATE_USER_ACTIONS: {
       const index = state.actions.findIndex((el) => el.id === payload.id);
       if (index === -1) return state;
