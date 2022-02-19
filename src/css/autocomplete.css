@@ -1,0 +1,22 @@
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+
+.input-box {
+  width: 300px;
+  max-width: 300px;
+}
+
+.input-box input {
+  width: 100%;
+}
+
+.option {
+  user-select: none;
+}
+.option.checked {
+  background-color: rgba(106, 176, 76, 0.3);
+}

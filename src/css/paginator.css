@@ -1,0 +1,21 @@
+.paginator {
+  display: flex;
+  justify-content: center;
+}
+.paginator div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /**/
+  transition: 0.2s;
+  /**/
+  user-select: none;
+  cursor: pointer;
+}
+.paginator div:nth-child(2) {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.paginator div:hover {
+  background-color: rgba(83, 92, 104, 0.2);
+}
