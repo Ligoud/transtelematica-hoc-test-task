@@ -8,11 +8,6 @@
     "build": "webpack --mode production",
     "test": "jest"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/jestConfig/CSSSTub.js"
-    }
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
