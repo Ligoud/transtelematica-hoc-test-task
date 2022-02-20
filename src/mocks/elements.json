@@ -15,13 +15,13 @@
     "id": "scottish",
     "parent_id": "cats",
     "name": "Шотландская",
-    "flags": ""
+    "flags": "filled"
   },
   {
     "id": "bulldog",
     "parent_id": "dogs",
     "name": "Бульдог",
-    "flags": ""
+    "flags": "filled"
   },
   {
     "id": "pug",

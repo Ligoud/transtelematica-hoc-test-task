@@ -2,7 +2,7 @@
   {
     "id": "cats",
     "name": "Кошки",
-    "flags": ""
+    "flags": "filled"
   },
   {
     "id": "dogs",

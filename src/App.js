@@ -13,11 +13,9 @@ import { loadCategories } from "./store/actions/category";
 import "../src/css/form.css";
 import withForm from "./hocs/withForm";
 
-const App = (props) => {
+const App = ({ FormComponent }) => {
   const dispatch = useDispatch();
-  console.log(props);
-  const Elem = props.data;
-  console.log(Elem);
+
   // Запросы к "Серверу"
   useEffect(() => {
     dispatch(loadCategories());
@@ -26,9 +24,7 @@ const App = (props) => {
 
   return (
     <div>
-      {/* <formComponent /> */}
-      321
-      {/* <Elem /> */}
+      <FormComponent />
     </div>
   );
 };

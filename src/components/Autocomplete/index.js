@@ -70,16 +70,16 @@ const Autocomplete = ({ category }) => {
 
       if (!isAutocompleteClicked(event.target)) setIsListOpen(false);
     };
-    window.addEventListener("click", propagationHandler);
+    document.addEventListener("click", propagationHandler);
     return () => {
-      window.removeEventListener("click", propagationHandler);
+      document.removeEventListener("click", propagationHandler);
     };
   }, []);
   return (
     <>
       {category && (
         <>
-          <div className="input-box">
+          <div className="input-box" data-testid="autocomplete">
             <input
               type="text"
               onChange={onChangeText}
@@ -93,9 +93,10 @@ const Autocomplete = ({ category }) => {
                 );
               }}
               placeholder="Введите текст"
+              data-testid="autocompleteInput"
             />
             {isListOpen && filteredElems.length > 0 && (
-              <div className="input-box_list">
+              <div className="input-box_list" data-testid="autocompleteList">
                 <ul>
                   {filteredElems
                     .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
@@ -115,12 +116,14 @@ const Autocomplete = ({ category }) => {
                                 : item
                             );
 
-                            dispatch(
-                              addUserAction({
-                                name: "CheckItem",
-                                value: `${el.id}-${!isChecked}`,
-                              })
-                            );
+                            if (!el.flags) {
+                              dispatch(
+                                addUserAction({
+                                  name: "CheckItem",
+                                  value: `${el.id}-${!isChecked}`,
+                                })
+                              );
+                            }
                             setFilteredElems(copied);
                           }}
                         >
