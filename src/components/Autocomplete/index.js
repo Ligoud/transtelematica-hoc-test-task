@@ -11,6 +11,7 @@ const Autocomplete = ({ category }) => {
 
   const { PAGE_SIZE } = constants;
 
+  const [isListOpen, setIsListOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [filteredElems, setFilteredElems] = useState([]);
   const [categoryItems, setCategoryItems] = useState([]);
@@ -50,12 +51,30 @@ const Autocomplete = ({ category }) => {
   // Автокомплит
   useEffect(() => {
     const filtered = categoryItems.filter(({ name = "" }) =>
-      name.includes(text)
+      name.toLowerCase().includes(text)
     );
 
     setFilteredElems(filtered);
   }, [text, categoryItems]);
 
+  useEffect(() => {
+    const propagationHandler = (event = {}) => {
+      const isAutocompleteClicked = (elem) => {
+        const parent = elem.parentNode;
+        const className = elem.className || "";
+        if (className.includes("input-box")) return true;
+        if (!!parent) return isAutocompleteClicked(parent);
+        return false;
+      };
+      const res = !isAutocompleteClicked(event.target);
+
+      if (!isAutocompleteClicked(event.target)) setIsListOpen(false);
+    };
+    window.addEventListener("click", propagationHandler);
+    return () => {
+      window.removeEventListener("click", propagationHandler);
+    };
+  }, []);
   return (
     <>
       {category && (
@@ -64,47 +83,62 @@ const Autocomplete = ({ category }) => {
             <input
               type="text"
               onChange={onChangeText}
+              onFocus={() => {
+                setIsListOpen(true);
+                dispatch(
+                  addUserAction({
+                    name: "FocusedOnInput",
+                    value: "",
+                  })
+                );
+              }}
               placeholder="Введите текст"
             />
-            <ul>
-              {filteredElems
-                .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
-                .map((el) => {
-                  const isChecked = !!el.isChecked;
-                  return (
-                    <li
-                      className={`option ${isChecked ? "checked" : ""}`}
-                      key={el.id}
-                      onClick={() => {
-                        const copied = filteredElems.map((item) =>
-                          item.id === el.id
-                            ? {
-                                ...el,
-                                isChecked: !isChecked,
-                              }
-                            : item
-                        );
-                        console.log(copied);
-                        dispatch(
-                          addUserAction({
-                            name: "CheckItem",
-                            value: `${el.id}-${!isChecked}`,
-                          })
-                        );
-                        setFilteredElems(copied);
-                      }}
-                    >
-                      {el.name}
-                    </li>
-                  );
-                })}
-            </ul>
-            <Paginator
-              page={page}
-              setPage={setPage}
-              filterString={`${category}-${text}`}
-              elementsCount={filteredElems.length}
-            />
+            {isListOpen && filteredElems.length > 0 && (
+              <div className="input-box_list">
+                <ul>
+                  {filteredElems
+                    .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+                    .map((el) => {
+                      const isChecked = !!el.isChecked;
+                      return (
+                        <li
+                          className={`option ${isChecked ? "checked" : ""}`}
+                          key={el.id}
+                          onClick={() => {
+                            const copied = filteredElems.map((item) =>
+                              item.id === el.id
+                                ? {
+                                    ...el,
+                                    isChecked: !isChecked,
+                                  }
+                                : item
+                            );
+
+                            dispatch(
+                              addUserAction({
+                                name: "CheckItem",
+                                value: `${el.id}-${!isChecked}`,
+                              })
+                            );
+                            setFilteredElems(copied);
+                          }}
+                        >
+                          {el.name}
+                        </li>
+                      );
+                    })}
+                </ul>
+                {filteredElems.length > 2 && (
+                  <Paginator
+                    page={page}
+                    setPage={setPage}
+                    filterString={`${category}-${text}`}
+                    elementsCount={filteredElems.length}
+                  />
+                )}
+              </div>
+            )}
           </div>
         </>
       )}

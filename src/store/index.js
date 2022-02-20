@@ -1,18 +1,15 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 
-import createSagaMiddleware from "redux-saga";
-// import { mySaga } from "../sagas";
+import thunk from "redux-thunk";
 
-import { category, user_actions, item, counter } from "./reducers";
+import { category, user_actions, item } from "./reducers";
 
 const root = combineReducers({
   category: category.reducer,
   user_actions: user_actions.reducer,
   item: item.reducer,
-  counter: counter.reducer,
 });
 
-const sagaMIddleWare = createSagaMiddleware();
-const store = createStore(root, applyMiddleware(sagaMIddleWare));
-// sagaMIddleWare.run(mySaga);
+const store = createStore(root, applyMiddleware(thunk));
+
 export default store;

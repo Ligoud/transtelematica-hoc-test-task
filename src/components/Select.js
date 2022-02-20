@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addUserAction } from "../store/actions/user_actions";
+import "../css/select.css";
 
 const Select = ({ setSelectedCategory }) => {
   const { categories = [] } = useSelector((state) => state.category);

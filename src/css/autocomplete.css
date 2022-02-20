@@ -1,17 +1,29 @@
 ul {
   padding: 0;
+  margin: 0;
+  border-bottom: 1px dotted gray;
 }
 li {
   list-style-type: none;
+  cursor: pointer;
+  padding-left: 5%;
+  overflow: hidden;
 }
 
 .input-box {
-  width: 300px;
-  max-width: 300px;
+  margin-top: 10%;
 }
-
+.input-box_list {
+  border: 1px solid black;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
 .input-box input {
   width: 100%;
+  box-sizing: border-box;
+}
+.input-box input:focus {
+  outline: none;
 }
 
 .option {

@@ -2,33 +2,35 @@ import React, { useEffect, useCallback, useState } from "react";
 import { hot } from "react-hot-loader";
 import { useSelector, useDispatch } from "react-redux";
 //
-import categoriesMock from "./mocks/categories.json";
 import elementsMock from "./mocks/elements.json";
 //
 import Autocomplete from "./components/Autocomplete";
 import Select from "./components/Select";
 //
-import { setCategory } from "./store/actions/category";
-import { setItem } from "./store/actions/item";
+import { loadItems } from "./store/actions/item";
+import { loadCategories } from "./store/actions/category";
+//
+import "../src/css/form.css";
+import withForm from "./hocs/withForm";
 
-const App = () => {
+const App = (props) => {
   const dispatch = useDispatch();
-
-  const [selectedCategory, setSelectedCategory] = useState("");
-
+  console.log(props);
+  const Elem = props.data;
+  console.log(Elem);
   // Запросы к "Серверу"
   useEffect(() => {
-    dispatch(setCategory(categoriesMock));
-    dispatch(setItem(elementsMock));
+    dispatch(loadCategories());
+    dispatch(loadItems());
   }, []);
 
   return (
-    <div className="App">
-      <Select setSelectedCategory={setSelectedCategory} />
-      <br />
-      <Autocomplete category={selectedCategory} />
+    <div>
+      {/* <formComponent /> */}
+      321
+      {/* <Elem /> */}
     </div>
   );
 };
 
-export default hot(module)(App);
+export default hot(module)(withForm(App));
