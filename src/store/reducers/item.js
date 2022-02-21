@@ -15,25 +15,25 @@ const reducer = (state = inititalState, action) => {
     case types.ADD_ITEM:
       return {
         ...state,
-        actions: [...state.actions, payload],
+        items: [...state.items, payload],
       };
     case types.UPDATE_ITEM: {
-      const index = state.actions.findIndex((el) => el.id === payload.id);
+      const index = state.items.findIndex((el) => el.id === payload.id);
       if (index === -1) return state;
-      const updatedActions = [...state.actions];
-      updatedActions[index] = payload;
+      const updatedItems = [...state.items];
+      updatedItems[index] = payload;
       return {
         ...state,
-        actions: updatedActions,
+        items: updatedItems,
       };
     }
     case types.DELETE_ITEM: {
-      const index = state.actions.findIndex((el) => el.id === payload.id);
+      const index = state.items.findIndex((el) => el.id === payload.id);
       if (index === -1) return state;
-      const updatedActions = [...state.actions].splice(index, 1);
+      const updatedItems = [...state.items].splice(index, 1);
       return {
         ...state,
-        actions: updatedActions,
+        items: updatedItems,
       };
     }
     default:

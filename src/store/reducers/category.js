@@ -15,25 +15,25 @@ function reducer(state = initialState, action) {
     case types.ADD_CATEGORY:
       return {
         ...state,
-        actions: [...state.actions, payload],
+        categories: [...state.categories, payload],
       };
     case types.UPDATE_CATEGORY: {
-      const index = state.actions.findIndex((el) => el.id === payload.id);
+      const index = state.categories.findIndex((el) => el.id === payload.id);
       if (index === -1) return state;
-      const updatedActions = [...state.actions];
-      updatedActions[index] = payload;
+      const updatedCategories = [...state.categories];
+      updatedCategories[index] = payload;
       return {
         ...state,
-        actions: updatedActions,
+        categories: updatedCategories,
       };
     }
     case types.DELETE_CATEGORY: {
-      const index = state.actions.findIndex((el) => el.id === payload.id);
+      const index = state.categories.findIndex((el) => el.id === payload.id);
       if (index === -1) return state;
-      const updatedActions = [...state.actions].splice(index, 1);
+      const updatedCategories = [...state.categories].splice(index, 1);
       return {
         ...state,
-        actions: updatedActions,
+        categories: updatedCategories,
       };
     }
     default:
